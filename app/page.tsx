@@ -9,7 +9,6 @@ function HomePage() {
     url: "/products.json",
   });
 
-  console.log(fetchData);
   return (
     <>
       <HeroVideo />
