@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Camiseta de Algodón Premium",
+    "price": 29.99,
+    "image_main": "/js.png",
+    "category": "Ropa",
+    "stock": 50
+  },
+  {
+    "id": 2,
+    "title": "Auriculares Inalámbricos Pro",
+    "price": 149.99,
+    "image_main": "/js.png",
+    "category": "Electrónica",
+    "stock": 30
+  },
+  {
+    "id": 3,
+    "title": "Reloj Deportivo GPS",
+    "price": 199.99,
+    "image_main": "/js.png",
+    "category": "Deportes",
+    "stock": 20
+  },
+  {
+    "id": 4,
+    "title": "NUEVO PRODUCTO",
+    "price": 9999999999999999999999999999999999999999,
+    "image_main": "/js.png",
+    "category": "nose",
+    "stock": 20
+  }
+]
