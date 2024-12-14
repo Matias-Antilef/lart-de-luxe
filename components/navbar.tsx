@@ -3,22 +3,22 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Heart, User, ShoppingBag, Menu, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { PublicRoutes } from "@/routes/routes";
+} from "../components/ui/sheet";
+import { PublicRoutes } from "../routes/routes";
 
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 ">
+    <nav className="sticky top-0 left-0 right-0 z-50 bg-background text-black">
       <div className="flex items-center justify-between px-4 py-2 max-w-7xl mx-auto">
         <div className="flex items-center space-x-4">
           <Sheet>
@@ -65,19 +65,19 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Link href={`/${PublicRoutes.FAVORITES}`}>
+          <Link href={`/${PublicRoutes.PAGES}/${PublicRoutes.FAVORITES}`}>
             <Button variant="ghost" size="icon">
               <Heart className="h-6 w-6" />
               <span className="sr-only">Favorites</span>
             </Button>
           </Link>
-          <Link href={`/${PublicRoutes.ACCOUNT}`}>
+          <Link href={`/${PublicRoutes.PAGES}/${PublicRoutes.ACCOUNT}`}>
             <Button variant="ghost" size="icon">
               <User className="h-6 w-6" />
               <span className="sr-only">Account</span>
             </Button>
           </Link>
-          <Link href={`/${PublicRoutes.CART}`}>
+          <Link href={`/${PublicRoutes.PAGES}/${PublicRoutes.CART}`}>
             <Button variant="ghost" size="icon">
               <ShoppingBag className="h-6 w-6" />
               <span className="sr-only">Shopping bag</span>

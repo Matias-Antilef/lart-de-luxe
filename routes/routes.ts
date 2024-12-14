@@ -1,8 +1,9 @@
 export enum PublicRoutes {
-  CART = "cart",
+  PAGES = "pages",
   AUTH = "auth",
-  LOGIN = "login",
   REGISTER = "register",
+  LOGIN = "login",
+  CART = "cart",
   FAVORITES = "favorites",
   PRODUCT_INFO = "product_info",
   SEARCH = "search",

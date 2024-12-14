@@ -1,8 +1,8 @@
-import { ProductCardModel } from "@/models/product.model";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { FavoritesModel } from "./favorites.model";
 
 interface FavoritesSlice {
-  items: ProductCardModel[];
+  items: FavoritesModel[];
 }
 
 const initialState: FavoritesSlice = {
@@ -13,7 +13,7 @@ export const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    addToFavorites: (state, action: PayloadAction<ProductCardModel>) => {
+    addToFavorites: (state, action: PayloadAction<FavoritesModel>) => {
       const exists = state.items.some((item) => item.id === action.payload.id);
       if (!exists) {
         state.items.push(action.payload);

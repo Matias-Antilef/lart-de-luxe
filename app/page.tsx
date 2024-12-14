@@ -1,9 +1,10 @@
 "use client";
 
-import HeroVideo from "@/components/HeroVideo";
-import ProductCard from "@/components/ui/product-card";
-import useFetch from "@/hooks/useFetch";
-import { ProductCardModel } from "@/models/product.model";
+import HeroVideo from "../components/hero-video";
+import ProductCard from "../components/product-card";
+import useFetch from "../hooks/useFetch";
+import { ProductCardModel } from "../models/product.model";
+
 function HomePage() {
   const { fetchData, loading } = useFetch<ProductCardModel>({
     url: "/products.json",

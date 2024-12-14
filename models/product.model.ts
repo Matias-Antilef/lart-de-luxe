@@ -4,9 +4,9 @@ export type ProductModel = {
   images: Image[];
   title: string;
   description: string;
-  price: number;
-  category: Category[];
-  stock: number;
+  price?: number;
+  category?: Category[];
+  stock?: number;
 };
 
 export type ProductCardModel = Omit<ProductModel, "images" | "description">;
