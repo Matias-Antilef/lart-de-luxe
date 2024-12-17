@@ -1,17 +1,27 @@
-export type ProductModel = {
-  id: number;
-  image_main: string;
-  images: Image[];
-  title: string;
-  description: string;
-  price?: number;
-  category?: Category[];
-  stock?: number;
+export type FetchProducts = {
+  products: ProductModel[];
 };
 
-export type ProductCardModel = Omit<ProductModel, "images" | "description">;
+export type ProductModel = {
+  id: number;
+  name: string;
+  brand?: string;
+  description: string;
+  price?: number;
+  disccount?: number;
+  active?: boolean;
+  categories: Category[];
+  stock?: number;
+  principal_picture: string;
+  photos: Photo[];
+};
 
-export type Image = {
+export type ProductCardModel = Omit<
+  ProductModel,
+  "photos" | "description" | "active"
+>;
+
+export type Photo = {
   id: number;
   url: string;
 };

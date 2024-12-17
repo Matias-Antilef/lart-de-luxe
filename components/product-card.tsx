@@ -7,17 +7,18 @@ import {
 } from "../components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { ProductCardModel } from "../models/product.model";
 import { useAddFavorite } from "../app/features/favorites/hooks/useFavorite";
 import { PublicRoutes } from "../routes/routes";
+import { ProductCardModel } from "@/models/product.model";
+
 function ProductCard({
   id,
-  title,
-  image_main,
+  name,
+  principal_picture,
   price,
   stock,
-  category,
-}: ProductCardModel & { crack?: boolean }) {
+  categories,
+}: ProductCardModel) {
   const addFavorite = useAddFavorite();
 
   return (
@@ -25,21 +26,26 @@ function ProductCard({
       <Link href={`/${PublicRoutes.PAGES}/${PublicRoutes.PRODUCT_INFO}/${id}`}>
         <div className="relative w-[500px] h-[500px] rounded-xl  ">
           <Image
-            src={image_main}
-            alt={title}
+            src={"/js.png"}
+            alt={name}
             fill
             className="object-cover rounded-lg"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <CardHeader>
-          <CardTitle> {title} </CardTitle>
+          <CardTitle> {name} </CardTitle>
           <CardDescription> {price} </CardDescription>
         </CardHeader>
       </Link>
       <HeartIcon
         onClick={() =>
-          addFavorite({ id, category, image_main, price, stock, title })
+          addFavorite({
+            id,
+            principal_picture,
+            name,
+            categories,
+          })
         }
         className="hover:fill-red-400 hover:cursor-pointer hover:bg-slate-500 hover:stroke-red-400 stroke-none border-red-300  fill-red-300 h-10 w-10 p-2 rounded-xl transition-colors  absolute top-5 right-5  "
       />

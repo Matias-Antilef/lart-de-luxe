@@ -1,5 +1,8 @@
+import { Category } from "@/models/product.model";
+
 export type FavoritesModel = {
   id: number;
-  image_main: string;
-  title: string;
+  principal_picture: string;
+  name: string;
+  categories: Category[];
 };

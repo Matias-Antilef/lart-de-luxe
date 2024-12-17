@@ -1,34 +1,56 @@
-[
-  {
-    "id": 1,
-    "title": "Camiseta de Algodón Premium",
-    "price": 29.99,
-    "image_main": "/js.png",
-    "category": "Ropa",
-    "stock": 50
-  },
-  {
-    "id": 2,
-    "title": "Auriculares Inalámbricos Pro",
-    "price": 149.99,
-    "image_main": "/js.png",
-    "category": "Electrónica",
-    "stock": 30
-  },
-  {
-    "id": 3,
-    "title": "Reloj Deportivo GPS",
-    "price": 199.99,
-    "image_main": "/js.png",
-    "category": "Deportes",
-    "stock": 20
-  },
-  {
-    "id": 4,
-    "title": "NUEVO PRODUCTO",
-    "price": 9999999999999999999999999999999999999999,
-    "image_main": "/js.png",
-    "category": "nose",
-    "stock": 20
-  }
-]
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Remera",
+      "brand": "Nike",
+      "description": "Remera Nike mamalona",
+      "price": 5,
+      "discount": 0,
+      "active": true,
+      "categories": [],
+      "stock": 10,
+      "principalPic": null,
+      "photos": []
+    },
+    {
+      "id": 2,
+      "name": "Pantalon",
+      "brand": "Nike",
+      "description": "pantalon Nike mamalon",
+      "price": 50,
+      "discount": 0,
+      "active": true,
+      "categories": [],
+      "stock": 100,
+      "principalPic": null,
+      "photos": []
+    },
+    {
+      "id": 3,
+      "name": "Buzo",
+      "brand": "Nike",
+      "description": "Buzo Nike mamalon",
+      "price": 500,
+      "discount": 0,
+      "active": true,
+      "categories": [],
+      "stock": 100,
+      "principalPic": null,
+      "photos": []
+    },
+    {
+      "id": 4,
+      "name": "Zapatillas",
+      "brand": "Nike",
+      "description": "Zapas Nike mamalonas",
+      "price": 400,
+      "discount": 0,
+      "active": true,
+      "categories": [],
+      "stock": 100,
+      "principalPic": null,
+      "photos": []
+    }
+  ]
+}

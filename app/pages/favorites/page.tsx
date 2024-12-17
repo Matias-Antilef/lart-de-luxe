@@ -12,9 +12,15 @@ function FavoritesPage() {
   return (
     <div className="">
       <section className="flex flex-wrap justify-around">
-        {favorites.map(({ id, image_main, title }) => (
+        {favorites.map(({ id, principal_picture, name, categories }) => (
           <div key={id}>
-            <ProductCard id={id} image_main={image_main} title={title} />
+            <ProductCard
+              key={id}
+              id={id}
+              categories={categories}
+              principal_picture={principal_picture}
+              name={name}
+            />
             <button onClick={() => removeFavorite(id)}>remove</button>
           </div>
         ))}
