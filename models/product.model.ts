@@ -7,7 +7,7 @@ export type ProductModel = {
   name: string;
   brand?: string;
   description: string;
-  price?: number;
+  price: number;
   disccount?: number;
   active?: boolean;
   categories: Category[];

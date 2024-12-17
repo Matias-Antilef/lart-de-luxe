@@ -1,7 +1,8 @@
-export type ProductCartModel = {
+export type CartModel = {
   id: number;
-  imageMain: string;
-  title: string;
-  price: number;
+  principal_picture: string;
+  name: string;
+  priceEach: number;
+  priceTotal: number;
   amount: number;
 };
