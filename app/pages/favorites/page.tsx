@@ -23,8 +23,9 @@ function FavoritesPage() {
                 categories={categories}
                 principalPic={principalPic}
                 name={name}
+                favorite={true}
+                removeFavorite={() => handleRemoveFavorite(id)}
               />
-              <button onClick={() => handleRemoveFavorite(id)}>remove</button>
             </div>
           )
         )}
