@@ -1,23 +1,39 @@
 import { useDispatch } from "react-redux";
 import { CartModel } from "../cart.model";
-import { addToCart, removeToCart } from "../cartSlice";
+import { addToCart, changeAmount, removeToCart } from "../cartSlice";
 
-export const useAddToCart = () => {
+export function useCart() {
   const dispatch = useDispatch();
 
-  const handleAddToCart = (product: CartModel) => {
-    dispatch(addToCart(product));
+  const handleReduceAmmount = (id: number, amount: number) => {
+    dispatch(changeAmount({ id, amount }));
+
+    return handleReduceAmmount;
   };
 
-  return handleAddToCart;
-};
-
-export const useRemoveToCart = () => {
-  const dispatch = useDispatch();
+  const handleAddAmount = (id: number, amount: number) => {
+    dispatch(changeAmount({ id, amount }));
+    return handleAddAmount;
+  };
 
   const handleRemoveToCart = (id: number) => {
     dispatch(removeToCart(id));
+
+    return handleRemoveToCart;
   };
 
-  return handleRemoveToCart;
-};
+  const handleAddToCart = (product: CartModel) => {
+    dispatch(addToCart(product));
+
+    return handleAddToCart;
+  };
+
+  return {
+    handleAddAmount,
+    handleReduceAmmount,
+    handleRemoveToCart,
+    handleAddToCart,
+  };
+}
+
+export default useCart;

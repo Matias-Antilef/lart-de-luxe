@@ -10,7 +10,6 @@ function HomePage() {
     url: "/products.json",
   });
 
-  console.log(fetchData);
   return (
     <>
       <HeroVideo />
@@ -20,7 +19,7 @@ function HomePage() {
           fetchData?.products?.map(
             ({
               id,
-              principal_picture,
+              principalPic,
               name,
               price,
               stock,
@@ -29,7 +28,7 @@ function HomePage() {
               <ProductCard
                 key={id}
                 id={id}
-                principal_picture={principal_picture}
+                principalPic={principalPic}
                 name={name}
                 price={price}
                 stock={stock}

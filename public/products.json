@@ -10,7 +10,7 @@
       "active": true,
       "categories": [],
       "stock": 10,
-      "principalPic": null,
+      "principalPic": "/js.png",
       "photos": []
     },
     {
@@ -23,7 +23,7 @@
       "active": true,
       "categories": [],
       "stock": 100,
-      "principalPic": null,
+      "principalPic": "/js.png",
       "photos": []
     },
     {
@@ -36,7 +36,7 @@
       "active": true,
       "categories": [],
       "stock": 100,
-      "principalPic": null,
+      "principalPic": "/js.png",
       "photos": []
     },
     {
@@ -49,7 +49,7 @@
       "active": true,
       "categories": [],
       "stock": 100,
-      "principalPic": null,
+      "principalPic": "/js.png",
       "photos": []
     }
   ]

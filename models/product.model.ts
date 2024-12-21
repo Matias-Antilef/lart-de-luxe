@@ -12,7 +12,7 @@ export type ProductModel = {
   active?: boolean;
   categories: Category[];
   stock?: number;
-  principal_picture: string;
+  principalPic: string;
   photos: Photo[];
 };
 
