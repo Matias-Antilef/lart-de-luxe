@@ -2,8 +2,7 @@
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { CartModel } from "@/app/features/cart/cart.model";
-import { CartItem } from "@/app/features/cart/components/cart-item";
+import { CartModel } from "@/app/cart/model/cart.model";
 import {
   Card,
   CardContent,
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@radix-ui/react-separator";
 import { Button } from "@/components/ui/button";
+import { CartItem } from "./components/cart-item";
 
 export default function CartPage() {
   const cart = useSelector((state: RootState) => state.cart.items);
@@ -40,7 +40,6 @@ export default function CartPage() {
             />
           )
         )}
-        }
       </Card>
       <Card className=" w-[40%] max-h-fit ">
         <CardHeader>Tú carrito</CardHeader>

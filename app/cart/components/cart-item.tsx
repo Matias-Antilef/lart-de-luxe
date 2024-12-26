@@ -3,12 +3,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { MinusIcon, PlusIcon, Trash2Icon } from "lucide-react";
 import Image from "next/image";
-import { CartModel } from "../cart.model";
 
 import { Button } from "@/components/ui/button";
 import useCart from "../hooks/useCart";
 import { ConfirmModal } from "@/components/ui/confirm-modal";
 import { useState } from "react";
+import { CartModel } from "../model/cart.model";
 
 export function CartItem({
   id,

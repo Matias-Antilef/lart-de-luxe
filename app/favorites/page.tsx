@@ -1,10 +1,10 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import useFavorite from "../../features/favorites/hooks/useFavorite";
-import { RootState } from "../../../redux/store";
-import ProductCard from "../../../components/product-card";
-import { FavoritesModel } from "@/app/features/favorites/favorites.model";
+import { FavoritesModel } from "@/app/favorites/model/favorites.model";
+import useFavorite from "./hooks/useFavorite";
+import { RootState } from "@/redux/store";
+import ProductCard from "@/components/product-card";
 
 function FavoritesPage() {
   const favorites = useSelector((state: RootState) => state.favorites.items);

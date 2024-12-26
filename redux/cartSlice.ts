@@ -1,5 +1,5 @@
+import { CartModel } from "@/app/cart/model/cart.model";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartModel } from "./cart.model";
 
 interface cartSlice {
   items: CartModel[];

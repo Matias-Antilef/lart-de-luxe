@@ -65,19 +65,19 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Link href={`/${PublicRoutes.PAGES}/${PublicRoutes.FAVORITES}`}>
+          <Link href={`${PublicRoutes.FAVORITES}`}>
             <Button variant="ghost" size="icon">
               <Heart className="h-6 w-6" />
               <span className="sr-only">Favorites</span>
             </Button>
           </Link>
-          <Link href={`/${PublicRoutes.PAGES}/${PublicRoutes.ACCOUNT}`}>
+          <Link href={`/${PublicRoutes.ACCOUNT}`}>
             <Button variant="ghost" size="icon">
               <User className="h-6 w-6" />
               <span className="sr-only">Account</span>
             </Button>
           </Link>
-          <Link href={`/${PublicRoutes.PAGES}/${PublicRoutes.CART}`}>
+          <Link href={`${PublicRoutes.CART}`}>
             <Button variant="ghost" size="icon">
               <ShoppingBag className="h-6 w-6" />
               <span className="sr-only">Shopping bag</span>

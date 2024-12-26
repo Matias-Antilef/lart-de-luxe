@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { addToFavorites, removeToFavorites } from "../favoritesSlice";
-import { FavoritesModel } from "../favorites.model";
+import { FavoritesModel } from "../model/favorites.model";
+import { addToFavorites, removeToFavorites } from "@/redux/favoritesSlice";
 
 export function useFavorite() {
   const dispatch = useDispatch();

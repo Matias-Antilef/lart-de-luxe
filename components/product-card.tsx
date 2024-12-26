@@ -10,8 +10,8 @@ import Link from "next/link";
 import { PublicRoutes } from "../routes/routes";
 import { ProductCardModel } from "@/models/product.model";
 import { Button } from "./ui/button";
-import { useCart } from "@/app/features/cart/hooks/useCart";
-import useFavorite from "@/app/features/favorites/hooks/useFavorite";
+import useFavorite from "@/app/favorites/hooks/useFavorite";
+import useCart from "@/app/cart/hooks/useCart";
 
 function ProductCard({
   id,
@@ -28,7 +28,7 @@ function ProductCard({
 
   return (
     <Card className="relative mb-7">
-      <Link href={`/${PublicRoutes.PAGES}/${PublicRoutes.PRODUCT_INFO}/${id}`}>
+      <Link href={`${PublicRoutes.PRODUCT_INFO}/${id}`}>
         <div className="relative w-[500px] h-[500px] ">
           <Image
             src={"/js.png"}
