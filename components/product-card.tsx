@@ -22,7 +22,7 @@ function ProductCard({
   categories,
   favorite,
   removeFavorite,
-}: ProductCardModel & { favorite?: boolean; removeFavorite: () => void }) {
+}: ProductCardModel & { favorite?: boolean; removeFavorite?: () => void }) {
   const { handleAddToCart } = useCart();
   const { handleAddToFavorite } = useFavorite();
 

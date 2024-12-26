@@ -40,7 +40,7 @@ export function CartItem({
         />
       )}
       ;
-      <Card className="w-full max-w-3xl overflow-hidden">
+      <Card className="w-full overflow-hidden">
         <CardContent className="p-0">
           <div className="flex items-center">
             <div className="relative h-32 w-32 flex-shrink-0">
@@ -52,7 +52,7 @@ export function CartItem({
                 sizes="(max-width: 8rem) 100vw, (max-width: 8rem) 50vw, 33vw"
               />
             </div>
-            <div className="flex flex-1 flex-col p-4">
+            <div className="flex flex-1 flex-col  p-4">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-lg font-semibold line-clamp-2">{name}</h3>
                 <Button
