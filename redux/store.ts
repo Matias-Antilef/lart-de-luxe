@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import favoritesReducer from "../app/features/favorites/favoritesSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import cartSlice from "../app/features/cart/cartSlice";
+import cartSlice from "./cartSlice";
+import favoritesReducer from "./favoritesSlice";
 
 const persistConfig = {
   key: "root",

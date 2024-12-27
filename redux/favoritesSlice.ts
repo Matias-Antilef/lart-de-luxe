@@ -1,5 +1,5 @@
+import { FavoritesModel } from "@/app/favorites/model/favorites.model";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { FavoritesModel } from "./favorites.model";
 
 interface FavoritesSlice {
   items: FavoritesModel[];
