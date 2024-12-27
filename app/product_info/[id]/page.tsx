@@ -1,9 +1,4 @@
-async function ProductInfo({ params }: { params: Promise<{ slug: number }> }) {
-  const { id } = await params;
-  return (
-    <div>
-      <h1> {id} </h1>
-    </div>
-  );
+function page() {
+  return <div>page</div>;
 }
-export default ProductInfo;
+export default page;

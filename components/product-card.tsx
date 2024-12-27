@@ -1,4 +1,4 @@
-import { Heading1, HeartCrack, HeartCrackIcon, HeartIcon } from "lucide-react";
+import { HeartCrackIcon, HeartIcon } from "lucide-react";
 import {
   Card,
   CardDescription,
@@ -40,7 +40,10 @@ function ProductCard({
         </div>
         <CardHeader className="p-3">
           <CardTitle> {name} </CardTitle>
-          <CardDescription> $ {price} </CardDescription>
+          <div>
+            <CardDescription> $ {price} </CardDescription>
+            {stock}
+          </div>
         </CardHeader>
       </Link>
       <CardDescription className="flex">
@@ -51,7 +54,6 @@ function ProductCard({
               name,
               amount: 1,
               price: price,
-              price_total: 0,
               principalPic: principalPic,
             })
           }

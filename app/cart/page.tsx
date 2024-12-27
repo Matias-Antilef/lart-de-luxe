@@ -2,14 +2,7 @@
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@radix-ui/react-separator";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CartItem } from "./components/cart-item";
 import { CartItemModel } from "./model/cart.model";
