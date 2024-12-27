@@ -10,7 +10,7 @@ function HeroVideo() {
       /> */}
       <video
         src="/hero.mp4"
-        className="filter grayscale object-cover w-full h-full"
+        className="filter grayscale object-cover w-screen absolute left-0 h-full"
       />
     </div>
   );

@@ -1,11 +1,15 @@
-import { CartModel } from "@/app/cart/model/cart.model";
+import { CartItemModel } from "@/app/cart/model/cart.model";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface cartSlice {
-  items: CartModel[];
+  id: number;
+  total_pay: number;
+  items: CartItemModel[];
 }
 
 const initialState: cartSlice = {
+  id: 0,
+  total_pay: 0,
   items: [],
 };
 
@@ -13,7 +17,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<CartModel>) => {
+    addToCart: (state, action: PayloadAction<CartItemModel>) => {
       const exists = state.items.some((item) => item.id === action.payload.id);
       if (!exists) {
         state.items.push(action.payload);

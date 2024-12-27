@@ -8,20 +8,20 @@ import { Button } from "@/components/ui/button";
 import useCart from "../hooks/useCart";
 import { ConfirmModal } from "@/components/ui/confirm-modal";
 import { useState } from "react";
-import { CartModel } from "../model/cart.model";
+import { CartItemModel } from "../model/cart.model";
 
 export function CartItem({
   id,
   name,
   price,
-  price_total,
   principalPic,
   amount,
-}: CartModel) {
-  price_total = price * amount;
+}: CartItemModel) {
   const { handleAddAmount, handleReduceAmmount, handleRemoveToCart } =
     useCart();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleConfirm = () => {
     handleRemoveToCart(id);
     setIsModalOpen(false);
@@ -39,8 +39,7 @@ export function CartItem({
           onCancel={() => setIsModalOpen(false)}
         />
       )}
-      ;
-      <Card className="w-full overflow-hidden">
+      <Card className="w-full overflow-hidden ">
         <CardContent className="p-0">
           <div className="flex items-center">
             <div className="relative h-32 w-32 flex-shrink-0">
@@ -66,11 +65,9 @@ export function CartItem({
               </div>
               <div className="flex justify-between items-end mt-auto">
                 <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">
-                    ${price.toFixed(2)} each
-                  </p>
+                  <p className="text-sm text-muted-foreground">${price} each</p>
                   <p className="text-sm font-medium">
-                    Total: ${price_total.toFixed(2)}
+                    Total: ${price * amount}
                   </p>
                 </div>
                 <div className="flex items-center space-x-2">
