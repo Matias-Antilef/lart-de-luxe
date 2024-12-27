@@ -14,7 +14,7 @@ function HomePage() {
     <>
       <HeroVideo />
 
-      <section className="flex flex-wrap justify-between px-3 py-10 bg-dark text-white">
+      <section className="flex flex-wrap justify-between py-10 bg-dark text-white">
         {fetchData &&
           fetchData?.products?.map(
             ({

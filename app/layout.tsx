@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className={"antialiased"}>
         <ReduxProvider>
           <Navbar />
-          <div className=" ">{children}</div>
+          <div className=" px-3 overflow-x-hidden">{children}</div>
         </ReduxProvider>
       </body>
     </html>
