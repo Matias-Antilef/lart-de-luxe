@@ -10,13 +10,16 @@ function HomePage() {
     url: "/products.json",
   });
 
+  console.log(fetchData);
+  console.log({ fetchData });
+
   return (
     <>
       <HeroVideo />
 
       <section className="flex flex-wrap justify-between py-10 bg-dark text-white">
         {fetchData &&
-          fetchData?.products?.map(
+          fetchData?.products.map(
             ({
               id,
               principalPic,

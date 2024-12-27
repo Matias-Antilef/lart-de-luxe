@@ -1,6 +1,6 @@
-export type FetchProducts = {
+export interface FetchProducts {
   products: ProductModel[];
-};
+}
 
 export type ProductModel = {
   id: number;

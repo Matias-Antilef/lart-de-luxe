@@ -1,6 +1,6 @@
 import { addToCart, changeAmount, removeToCart } from "@/redux/cartSlice";
 import { useDispatch } from "react-redux";
-import { CartModel } from "../model/cart.model";
+import { CartItemModel } from "../model/cart.model";
 
 export function useCart() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export function useCart() {
     return handleRemoveToCart;
   };
 
-  const handleAddToCart = (product: CartModel) => {
+  const handleAddToCart = (product: CartItemModel) => {
     dispatch(addToCart(product));
 
     return handleAddToCart;
