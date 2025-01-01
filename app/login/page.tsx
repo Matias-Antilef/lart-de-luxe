@@ -3,20 +3,30 @@
 import { TextField } from "@/components/ui/text-field";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { LoginModel } from "./model/login.model";
+import { LoginModel } from "./login.model";
 import Link from "next/link";
 import { PublicRoutes } from "@/routes/routes";
+import { useRouter } from "next/navigation";
+import { useUser } from "@/hooks/useUser";
+import { Roles } from "@/models/user.model";
 
 function LoginPage() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<LoginModel>();
-
+  const { handleSetUser } = useUser();
   async function onSubmit(data: LoginModel) {
-    console.log(data);
+    handleSetUser({
+      email: data.email,
+      role: Roles.CLIENT,
+      jwt: "abcdefghijklmnopqrstuvwxyz",
+    });
+
+    router.push("/");
   }
 
   return (

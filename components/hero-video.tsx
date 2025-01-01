@@ -1,6 +1,6 @@
 function HeroVideo() {
   return (
-    <div className="w-full h-[100vh] ">
+    <div className="w-screen min-h-[calc(100vh-55px]  ">
       {/* <video
         src="/hero.mp4"
         loop
@@ -10,7 +10,8 @@ function HeroVideo() {
       /> */}
       <video
         src="/hero.mp4"
-        className="filter grayscale object-cover w-screen absolute left-0 h-full"
+        muted
+        className="filter grayscale object-cover w-full h-screen"
       />
     </div>
   );

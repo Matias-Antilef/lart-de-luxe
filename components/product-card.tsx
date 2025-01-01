@@ -10,8 +10,8 @@ import Link from "next/link";
 import { PublicRoutes } from "../routes/routes";
 import { ProductCardModel } from "@/models/product.model";
 import { Button } from "./ui/button";
-import useFavorite from "@/app/favorites/hooks/useFavorite";
-import useCart from "@/app/cart/hooks/useCart";
+import { useCart } from "@/app/cart/hooks/useCart";
+import { useFvorite } from "@/app/favorites/hooks/useFavorite";
 
 function ProductCard({
   id,
@@ -23,13 +23,13 @@ function ProductCard({
   favorite,
   removeFavorite,
 }: ProductCardModel & { favorite?: boolean; removeFavorite?: () => void }) {
+  const { handleAddToFavorite } = useFvorite();
   const { handleAddToCart } = useCart();
-  const { handleAddToFavorite } = useFavorite();
 
   return (
-    <Card className="relative mb-7">
+    <Card className="  relative min-w-[500px] ">
       <Link href={`${PublicRoutes.PRODUCT_INFO}/${id}`}>
-        <div className="relative w-[500px] h-[500px] ">
+        <div className="relative w-full min-h-[55vh] h-[520px] ">
           <Image
             src={"/js.png"}
             alt={name}
@@ -41,8 +41,9 @@ function ProductCard({
         <CardHeader className="p-3">
           <CardTitle> {name} </CardTitle>
           <div>
-            <CardDescription> $ {price} </CardDescription>
-            {stock}
+            <CardDescription className="text-xl font-semibold text-black">
+              $ {price}
+            </CardDescription>
           </div>
         </CardHeader>
       </Link>
@@ -57,7 +58,7 @@ function ProductCard({
               principalPic: principalPic,
             })
           }
-          className="flex-1"
+          className="flex-1 text-lg py-6"
         >
           Añadir a la bolsa
         </Button>

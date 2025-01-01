@@ -1,8 +1,7 @@
 export type UserModel = {
-  id: string;
   email: string;
-  username: string;
   role: Roles;
+  jwt: string;
 };
 
 export enum Roles {

@@ -1,13 +1,14 @@
 "use client";
 
 import { TextField } from "@/components/ui/text-field";
-import { RegisterModel } from "./model/register.model";
-import { useForm } from "react-hook-form";
+import { RegisterModel } from "./register.model";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { PublicRoutes } from "@/routes/routes";
-
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 function RegisterPage() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -16,7 +17,11 @@ function RegisterPage() {
   } = useForm<RegisterModel>();
 
   async function onSubmit(data: RegisterModel) {
-    console.log(data);
+    if (data.password !== data.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+    router.push(PublicRoutes.LOGIN);
   }
 
   return (
@@ -76,10 +81,8 @@ function RegisterPage() {
         />
         <Button type="submit">Register</Button>
       </form>
-      <span>
-        Have account?
-        <Link href={PublicRoutes.LOGIN}>Login</Link>
-      </span>
+      <span>Have account?</span>
+      <Link href={PublicRoutes.LOGIN}>Login</Link>
     </div>
   );
 }

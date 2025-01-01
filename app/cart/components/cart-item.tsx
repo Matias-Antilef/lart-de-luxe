@@ -3,12 +3,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { MinusIcon, PlusIcon, Trash2Icon } from "lucide-react";
 import Image from "next/image";
-
 import { Button } from "@/components/ui/button";
-import useCart from "../hooks/useCart";
 import { ConfirmModal } from "@/components/ui/confirm-modal";
 import { useState } from "react";
-import { CartItemModel } from "../model/cart.model";
+import { CartItemModel } from "../cart.model";
+import { useCart } from "../hooks/useCart";
 
 export function CartItem({
   id,
@@ -17,10 +16,9 @@ export function CartItem({
   principalPic,
   amount,
 }: CartItemModel) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { handleAddAmount, handleReduceAmmount, handleRemoveToCart } =
     useCart();
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleConfirm = () => {
     handleRemoveToCart(id);

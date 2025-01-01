@@ -1,16 +1,14 @@
 "use client";
 
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CartItem } from "./components/cart-item";
-import { CartItemModel } from "./model/cart.model";
+import { CartItemModel } from "./cart.model";
+import { useCart } from "./hooks/useCart";
 
 export default function CartPage() {
-  const cart = useSelector((state: RootState) => state.cart.items);
-
-  const prices = cart.map((item) => item.price * item.amount);
+  const { getCart } = useCart();
+  const prices = getCart().map((item) => item.price * item.amount);
   const subTotal = prices.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
@@ -21,7 +19,7 @@ export default function CartPage() {
   return (
     <div className="flex gap-2">
       <Card className="flex-1 max-w-[60%] flex flex-col gap-5 ">
-        {cart.map(
+        {getCart().map(
           ({ amount, id, name, price, principalPic }: CartItemModel) => (
             <CartItem
               key={id}
@@ -44,7 +42,7 @@ export default function CartPage() {
           </div>
           <Button
             className="w-full"
-            onClick={() => console.log({ total: total, cart: cart })}
+            onClick={() => console.log({ total: total, cart: getCart() })}
           >
             Pagar ahora
           </Button>

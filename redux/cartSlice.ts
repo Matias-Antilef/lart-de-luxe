@@ -1,14 +1,14 @@
-import { CartItemModel } from "@/app/cart/model/cart.model";
+import { CartItemModel } from "@/app/cart/cart.model";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface cartSlice {
-  id: number;
+  cart_id: number;
   total_pay: number;
   items: CartItemModel[];
 }
 
 const initialState: cartSlice = {
-  id: 0,
+  cart_id: 1,
   total_pay: 0,
   items: [],
 };

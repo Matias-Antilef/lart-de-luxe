@@ -4,19 +4,17 @@ import ProductCard from "@/components/product-card";
 import HeroVideo from "../components/hero-video";
 import useFetch from "../hooks/useFetch";
 import { FetchProducts, ProductCardModel } from "@/models/product.model";
-import { useState } from "react";
 
 function HomePage() {
-  const [response, setResponse] = useState();
   const { fetchData } = useFetch<FetchProducts>({
     url: "/products.json",
   });
 
   return (
-    <>
+    <div>
       <HeroVideo />
 
-      <section className="flex flex-wrap justify-between py-10 bg-dark text-white">
+      <section className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 ">
         {fetchData &&
           fetchData?.products.map(
             ({
@@ -39,7 +37,7 @@ function HomePage() {
             )
           )}
       </section>
-    </>
+    </div>
   );
 }
 export default HomePage;

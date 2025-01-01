@@ -7,10 +7,9 @@ interface userSlice {
 
 const initialState: userSlice = {
   user: {
-    id: "",
     email: "",
-    username: "guest",
     role: Roles.GUEST,
+    jwt: "",
   },
 };
 
@@ -19,7 +18,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<UserModel>) => {
-      state.user = action.payload;
+      state.user = { ...action.payload };
     },
     logout: (state) => {
       state.user = initialState.user;

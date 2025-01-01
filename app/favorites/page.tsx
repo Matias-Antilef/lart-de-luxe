@@ -1,18 +1,21 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import { FavoritesModel } from "@/app/favorites/model/favorites.model";
-import useFavorite from "./hooks/useFavorite";
+import { FavoritesModel } from "@/app/favorites/favorites.model";
 import { RootState } from "@/redux/store";
 import ProductCard from "@/components/product-card";
+import { useFvorite } from "./hooks/useFavorite";
 
 function FavoritesPage() {
-  const favorites = useSelector((state: RootState) => state.favorites.items);
-  const { handleRemoveFavorite } = useFavorite();
+  const { handleRemoveFavorite } = useFvorite();
+
+  const favorites = useSelector(
+    (state: RootState) => state.favorites.favorites
+  );
 
   return (
-    <div className="">
-      <section className="flex flex-wrap justify-around">
+    <div className="w-screen flex flex-col items-center ">
+      <section className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2  ">
         {favorites.map(
           ({ id, price, principalPic, name, categories }: FavoritesModel) => (
             <div key={id}>

@@ -18,8 +18,8 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 left-0 right-0 z-50 bg-background text-black">
-      <div className="flex items-center justify-between px-4 py-2 max-w-7xl mx-auto">
+    <nav className="sticky top-0 left-0 right-0 z-50 h-[6vh] bg-background text-black">
+      <div className="flex items-center h-full justify-between px-[8vw] mx-auto">
         <div className="flex items-center space-x-4">
           <Sheet>
             <SheetTrigger asChild>
@@ -64,10 +64,10 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <Link href={`${PublicRoutes.FAVORITES}`}>
+        <div className="flex space-x-4">
+          <Link href={`/${PublicRoutes.FAVORITES}`}>
             <Button variant="ghost" size="icon">
-              <Heart className="h-6 w-6" />
+              <Heart className="h-10 w-10" />
               <span className="sr-only">Favorites</span>
             </Button>
           </Link>
@@ -77,7 +77,7 @@ const Navbar = () => {
               <span className="sr-only">Account</span>
             </Button>
           </Link>
-          <Link href={`${PublicRoutes.CART}`}>
+          <Link href={`/${PublicRoutes.CART}`}>
             <Button variant="ghost" size="icon">
               <ShoppingBag className="h-6 w-6" />
               <span className="sr-only">Shopping bag</span>
