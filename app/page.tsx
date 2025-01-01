@@ -4,14 +4,13 @@ import ProductCard from "@/components/product-card";
 import HeroVideo from "../components/hero-video";
 import useFetch from "../hooks/useFetch";
 import { FetchProducts, ProductCardModel } from "@/models/product.model";
+import { useState } from "react";
 
 function HomePage() {
+  const [response, setResponse] = useState();
   const { fetchData } = useFetch<FetchProducts>({
     url: "/products.json",
   });
-
-  console.log(fetchData);
-  console.log({ fetchData });
 
   return (
     <>
