@@ -1,8 +1,11 @@
 import { useDispatch } from "react-redux";
-import { FavoritesModel } from "../favorites.model";
-import { addToFavorites, removeToFavorites } from "@/redux/favoritesSlice";
+import { FavoritesModel } from "../../app/core/favorites/favorites.model";
+import {
+  addToFavorites,
+  removeToFavorites,
+} from "@/redux/slices/favoritesSlice";
 
-export const useFvorite = () => {
+export const useFavorite = () => {
   const dispatch = useDispatch();
 
   const handleAddToFavorite = (product: FavoritesModel) => {

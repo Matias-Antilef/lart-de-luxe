@@ -1,4 +1,8 @@
-function page() {
-  return <div>page</div>;
+function AccountPage() {
+  return (
+    <>
+      <h1>Account</h1>
+    </>
+  );
 }
-export default page;
+export default AccountPage;

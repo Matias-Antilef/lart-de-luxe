@@ -1,4 +1,4 @@
-import { CartItemModel } from "@/app/cart/cart.model";
+import { CartItemModel } from "@/app/core/cart/cart.model";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface cartSlice {

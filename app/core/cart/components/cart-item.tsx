@@ -7,8 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ConfirmModal } from "@/components/ui/confirm-modal";
 import { useState } from "react";
 import { CartItemModel } from "../cart.model";
-import { useCart } from "../hooks/useCart";
-
+import { useCart } from "@/redux/hooks/useCart";
 export function CartItem({
   id,
   name,
@@ -55,7 +54,7 @@ export function CartItem({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-destructive"
+                  className="text-destructive/90 hover:text-destructive hover:bg-destructive/10 "
                   onClick={() => handleRemoveToCart(id)}
                 >
                   <Trash2Icon className="h-5 w-5" />

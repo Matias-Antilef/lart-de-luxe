@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ReduxProvider from "../redux/ReduxProvider";
-import Navbar from "../components/navbar";
 
 export const metadata: Metadata = {
   title: "L'art De Luxe",
@@ -17,8 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={"antialiased"}>
         <ReduxProvider>
-          <Navbar />
-          <div className="overflow-x-hidden">{children}</div>
+          <div className="overflow-hidden  min-h-screen min-w-screen ">
+            {children}
+          </div>
         </ReduxProvider>
       </body>
     </html>

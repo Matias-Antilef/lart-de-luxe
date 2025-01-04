@@ -1,21 +1,32 @@
 "use client";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { CartItem } from "./components/cart-item";
 import { CartItemModel } from "./cart.model";
-import { useCart } from "./hooks/useCart";
+import { useCart } from "@/redux/hooks/useCart";
+import { CartItem } from "./components/cart-item";
+import { Button } from "@/components/ui/button";
+import { get } from "http";
+import { useUser } from "@/redux/hooks/useUser";
 
 export default function CartPage() {
   const { getCart } = useCart();
+  const { getUser } = useUser();
   const prices = getCart().map((item) => item.price * item.amount);
   const subTotal = prices.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
-
   const IVA = subTotal * 0.21;
   const total = (subTotal + IVA).toFixed(0);
+
+  const totala = getCart();
+  const user = getUser();
+  const handlePayNow = () => {
+    if (user.user.jwt === "") {
+      return alert("Need to login first");
+    }
+    console.log(totala);
+  };
   return (
     <div className="flex gap-2">
       <Card className="flex-1 max-w-[60%] flex flex-col gap-5 ">
@@ -40,10 +51,7 @@ export default function CartPage() {
             <h3>IVA (21%): ${IVA.toFixed(0)}</h3>
             <h3>Total: ${total}</h3>
           </div>
-          <Button
-            className="w-full"
-            onClick={() => console.log({ total: total, cart: getCart() })}
-          >
+          <Button className="w-full" onClick={handlePayNow}>
             Pagar ahora
           </Button>
         </CardContent>

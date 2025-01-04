@@ -1,5 +1,5 @@
+import { Roles, UserModel } from "@/models/user.model";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Roles, UserModel } from "../models/user.model";
 
 interface userSlice {
   user: UserModel;

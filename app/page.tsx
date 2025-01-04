@@ -4,6 +4,7 @@ import ProductCard from "@/components/product-card";
 import HeroVideo from "../components/hero-video";
 import useFetch from "../hooks/useFetch";
 import { FetchProducts, ProductCardModel } from "@/models/product.model";
+import Navbar from "@/components/navbar";
 
 function HomePage() {
   const { fetchData } = useFetch<FetchProducts>({
@@ -12,9 +13,10 @@ function HomePage() {
 
   return (
     <div>
+      <Navbar />
       <HeroVideo />
 
-      <section className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 ">
+      <section className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1 ">
         {fetchData &&
           fetchData?.products.map(
             ({

@@ -10,8 +10,8 @@ import Link from "next/link";
 import { PublicRoutes } from "../routes/routes";
 import { ProductCardModel } from "@/models/product.model";
 import { Button } from "./ui/button";
-import { useCart } from "@/app/cart/hooks/useCart";
-import { useFvorite } from "@/app/favorites/hooks/useFavorite";
+import { useCart } from "@/redux/hooks/useCart";
+import { useFavorite } from "@/redux/hooks/useFavorite";
 
 function ProductCard({
   id,
@@ -23,19 +23,19 @@ function ProductCard({
   favorite,
   removeFavorite,
 }: ProductCardModel & { favorite?: boolean; removeFavorite?: () => void }) {
-  const { handleAddToFavorite } = useFvorite();
+  const { handleAddToFavorite } = useFavorite();
   const { handleAddToCart } = useCart();
 
   return (
-    <Card className="  relative min-w-[500px] ">
+    <Card className="relative">
       <Link href={`${PublicRoutes.PRODUCT_INFO}/${id}`}>
-        <div className="relative w-full min-h-[55vh] h-[520px] ">
+        <div className="relative w-full h-[60vh]">
           <Image
             src={"/js.png"}
             alt={name}
             fill
-            className="object-cover rounded-t-lg"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover h-full w-full rounded-lg"
+            sizes=""
           />
         </div>
         <CardHeader className="p-3">
