@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/redux/hooks/useUser";
 import { Roles } from "@/models/user.model";
 import AuthForm from "../components/auth-form";
+import axios from "axios";
 
 function LoginPage() {
   const router = useRouter();
@@ -18,13 +19,24 @@ function LoginPage() {
   } = useForm<LoginModel>();
   const { handleSetUser } = useUser();
   async function onSubmit(data: LoginModel) {
-    handleSetUser({
-      email: data.email,
-      role: Roles.CLIENT,
-      jwt: "abcdefghijklmnopqrstuvwxyz",
-    });
-
-    router.push("/");
+    try {
+      axios
+        .post(process.env.NEXT_PUBLIC_BASE_URL + "/auth/login", data)
+        .then((response) => {
+          if (response.status === 200) {
+            handleSetUser({
+              username: data.username,
+              role: Roles.CLIENT,
+              jwt: response.data.jwt,
+            });
+            router.push("/");
+          } else {
+            alert("Error al crear el usuario. Intenta nuevamente.");
+          }
+        });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -36,15 +48,15 @@ function LoginPage() {
       footerMsgLink="Register"
     >
       <TextField
-        {...register("email", {
+        {...register("username", {
           required: {
             value: true,
-            message: "Email is required",
+            message: "Username is required",
           },
         })}
-        label="email"
-        type="email"
-        error={errors.email?.message}
+        label="username"
+        type="text"
+        error={errors.username?.message}
       />
 
       <TextField

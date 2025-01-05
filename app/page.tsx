@@ -1,24 +1,32 @@
 "use client";
 
-import ProductCard from "@/components/product-card";
-import HeroVideo from "../components/hero-video";
-import useFetch from "../hooks/useFetch";
+import ProductCard from "@/components/product/product-card";
 import { FetchProducts, ProductCardModel } from "@/models/product.model";
-import Navbar from "@/components/navbar";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import ProductsWrapper from "@/components/product/products-wrapper";
+import HeroVideo from "@/components/hero-video";
+import Navegation from "@/components/navegation/navegation";
 
 function HomePage() {
-  const { fetchData } = useFetch<FetchProducts>({
-    url: "/products.json",
-  });
+  const [products, setProducts] = useState<FetchProducts>({ products: [] });
+  useEffect(() => {
+    axios
+      // .get(process.env.NEXT_PUBLIC_BASE_URL + "/products/getall")
+      .get("/products.json")
+      .then((res) => {
+        setProducts(res.data);
+      });
+  }, []);
 
   return (
     <div>
-      <Navbar />
+      <Navegation />
       <HeroVideo />
 
-      <section className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1 ">
-        {fetchData &&
-          fetchData?.products.map(
+      <ProductsWrapper>
+        {products &&
+          products?.products.map(
             ({
               id,
               principalPic,
@@ -38,7 +46,7 @@ function HomePage() {
               />
             )
           )}
-      </section>
+      </ProductsWrapper>
     </div>
   );
 }

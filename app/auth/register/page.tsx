@@ -6,6 +6,7 @@ import { PublicRoutes } from "@/routes/routes";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import AuthForm from "../components/auth-form";
+import axios from "axios";
 function RegisterPage() {
   const router = useRouter();
   const {
@@ -19,7 +20,21 @@ function RegisterPage() {
       alert("Passwords do not match");
       return;
     }
-    router.push(PublicRoutes.LOGIN);
+    const { confirmPassword, ...userData } = data;
+    try {
+      const response = await axios.post(
+        process.env.NEXT_PUBLIC_BASE_URL + "/users/create",
+        userData
+      );
+
+      if (response.status === 200) {
+        router.push(PublicRoutes.LOGIN);
+      } else {
+        alert("Error al crear el usuario. Intenta nuevamente.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

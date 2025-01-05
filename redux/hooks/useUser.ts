@@ -12,7 +12,8 @@ export const useUser = () => {
   };
 
   const getUser = () => {
-    return useSelector((state: RootState) => state.user);
+    const user = useSelector((state: RootState) => state.user.user);
+    return user;
   };
 
   const logoutUser = () => {

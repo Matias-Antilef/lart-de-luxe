@@ -1,5 +1,5 @@
 export type UserModel = {
-  email: string;
+  username: string;
   role: Roles;
   jwt: string;
 };

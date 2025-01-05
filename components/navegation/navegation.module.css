@@ -1,0 +1,21 @@
+.navegation {
+  position: fixed;
+  height: 55px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  color: white;
+  background-color: black;
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.logo_link {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

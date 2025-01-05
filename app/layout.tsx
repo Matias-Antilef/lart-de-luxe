@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={"antialiased"}>
         <ReduxProvider>
-          <div className="overflow-hidden  min-h-screen min-w-screen ">
+          <div className="pt-[55px] overflow-hidden  min-h-screen min-w-screen ">
             {children}
           </div>
         </ReduxProvider>

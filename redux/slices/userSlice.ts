@@ -7,7 +7,7 @@ interface userSlice {
 
 const initialState: userSlice = {
   user: {
-    email: "",
+    username: "",
     role: Roles.GUEST,
     jwt: "",
   },

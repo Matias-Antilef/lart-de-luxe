@@ -11,7 +11,7 @@ function HeroVideo() {
       <video
         src="/hero.mp4"
         muted
-        className="filter grayscale object-cover w-full h-screen"
+        className="filter grayscale object-cover w-full h-[calc(100vh-55px)] "
       />
     </div>
   );
