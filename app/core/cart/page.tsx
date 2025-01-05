@@ -5,8 +5,9 @@ import { CartItemModel } from "./cart.model";
 import { useCart } from "@/redux/hooks/useCart";
 import { CartItem } from "./components/cart-item";
 import { Button } from "@/components/ui/button";
-import { get } from "http";
 import { useUser } from "@/redux/hooks/useUser";
+import { useRouter } from "next/router";
+import { PublicRoutes } from "@/routes/routes";
 
 export default function CartPage() {
   const { getCart } = useCart();
@@ -19,13 +20,11 @@ export default function CartPage() {
   const IVA = subTotal * 0.21;
   const total = (subTotal + IVA).toFixed(0);
 
-  const totala = getCart();
   const user = getUser();
   const handlePayNow = () => {
     if (user.user.jwt === "") {
-      return alert("Need to login first");
+      alert("Need to login first");
     }
-    console.log(totala);
   };
   return (
     <div className="flex gap-2">
