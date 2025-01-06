@@ -20,7 +20,7 @@ export default function CartPage() {
   console.log(getCart());
   const user = getUser();
   const handlePayNow = () => {
-    if (user.user.jwt === "") {
+    if (user.jwt === "") {
       alert("Need to login first");
     }
   };
