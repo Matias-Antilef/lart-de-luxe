@@ -1,18 +1,13 @@
 "use client";
 
-import { useSelector } from "react-redux";
 import { FavoritesModel } from "@/app/core/favorites/favorites.model";
-import { RootState } from "@/redux/store";
 import ProductCard from "@/components/product/product-card";
-import { useFavorite } from "@/redux/hooks/useFavorite";
 import ProductsWrapper from "@/components/product/products-wrapper";
+import { useFavorite } from "@/context/favorite.store";
 
 function FavoritesPage() {
-  const { handleRemoveFavorite } = useFavorite();
-
-  const favorites = useSelector(
-    (state: RootState) => state.favorites.favorites
-  );
+  const favorites = useFavorite((state) => state.favorites);
+  const removeToFavorites = useFavorite((state) => state.removeToFavorites);
 
   return (
     <ProductsWrapper>
@@ -27,7 +22,7 @@ function FavoritesPage() {
               principalPic={principalPic}
               name={name}
               favorite={true}
-              removeFavorite={() => handleRemoveFavorite(id)}
+              removeFavorite={() => removeToFavorites(id)}
             />
           </div>
         )

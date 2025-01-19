@@ -9,9 +9,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { PublicRoutes } from "@/routes/routes";
 import { ProductCardModel } from "@/models/product.model";
-import { useFavorite } from "@/redux/hooks/useFavorite";
 import { Button } from "../ui/button";
 import { useCart } from "@/context/cart.store";
+import { useFavorite } from "@/context/favorite.store";
 
 function ProductCard({
   id,
@@ -28,8 +28,9 @@ function ProductCard({
   removeFavorite?: () => void;
   className?: string;
 }) {
-  const { handleAddToFavorite } = useFavorite();
   const addToCart = useCart((state) => state.addToCart);
+  const addToFavorites = useFavorite((state) => state.addToFavorites);
+  const removeToFavorites = useFavorite((state) => state.removeToFavorites);
 
   const handleAddToCart = () => {
     addToCart({
@@ -41,14 +42,19 @@ function ProductCard({
     });
   };
 
-  // const handleAddToFavorite = () => {() =>
-  //   handleAddToFavorite({
-  //     id,
-  //     principalPic,
-  //     name,
-  //     price,
-  //     categories,
-  //   })
+  const handleAddToFavorite = () => {
+    addToFavorites({
+      id,
+      name,
+      price,
+      principalPic,
+      categories,
+    });
+  };
+
+  const handleRemoveToFavorite = () => {
+    removeToFavorites(id);
+  };
 
   return (
     <Card className="relative">
@@ -78,15 +84,14 @@ function ProductCard({
       </CardDescription>
       {favorite ? (
         <HeartCrackIcon
-          onClick={removeFavorite}
+          onClick={handleRemoveToFavorite}
           className=" hover:cursor-pointer hover:bg-slate-500 hover:stroke-red-600 stroke-red-200 fill-red-300 h-10 w-10 p-2 rounded-xl transition-colors  absolute top-5 right-5"
         />
       ) : (
-        // <HeartIcon
-        //   onClick={handleAddToFavorite}
-        //   className="hover:fill-red-400 hover:cursor-pointer hover:bg-slate-500 hover:stroke-red-400 stroke-none border-red-300  fill-red-300 h-10 w-10 p-2 rounded-xl transition-colors  absolute top-5 right-5"
-        // />
-        <h1>a</h1>
+        <HeartIcon
+          onClick={handleAddToFavorite}
+          className="hover:fill-red-400 hover:cursor-pointer hover:bg-slate-500 hover:stroke-red-400 stroke-none border-red-300  fill-red-300 h-10 w-10 p-2 rounded-xl transition-colors  absolute top-5 right-5"
+        />
       )}
     </Card>
   );
