@@ -2,33 +2,26 @@
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { CartItemModel } from "./cart.model";
-import { useCart } from "@/redux/hooks/useCart";
 import { CartItem } from "./components/cart-item";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@/redux/hooks/useUser";
+import { useCart } from "@/context/cart.store";
 
 export default function CartPage() {
-  const { getCart } = useCart();
-  const { getUser } = useUser();
-  const prices = getCart().map((item) => item.price * item.amount);
+  const cart = useCart((state) => state.items);
+
+  const prices = cart.map((item) => item.price * item.amount);
   const subTotal = prices.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
   const IVA = subTotal * 0.21;
   const total = (subTotal + IVA).toFixed(0);
-  console.log(getCart());
-  const user = getUser();
-  const handlePayNow = () => {
-    if (user.jwt === "") {
-      alert("Need to login first");
-    }
-  };
+
   return (
     <div className="flex gap-2">
-      <Card className="flex-1 max-w-[60%] flex flex-col gap-5 ">
-        {getCart() &&
-          getCart().map(
+      <Card className="flex-1 max-w-[60%] flex flex-col gap-5">
+        {cart &&
+          cart.map(
             ({ amount, id, name, price, principalPic }: CartItemModel) => (
               <CartItem
                 key={id}
@@ -49,9 +42,7 @@ export default function CartPage() {
             <h3>IVA (21%): ${IVA.toFixed(0)}</h3>
             <h3>Total: ${total}</h3>
           </div>
-          <Button className="w-full" onClick={handlePayNow}>
-            Pagar ahora
-          </Button>
+          <Button className="w-full">Pagar ahora</Button>
         </CardContent>
       </Card>
     </div>

@@ -1,8 +1,4 @@
-import {
-  addToCart,
-  changeAmount,
-  removeToCart,
-} from "@/redux/slices/cartSlice";
+import { changeAmount, removeToCart } from "@/redux/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { CartItemModel } from "../../app/core/cart/cart.model";
@@ -27,12 +23,6 @@ export const useCart = () => {
     return handleRemoveToCart;
   };
 
-  const handleAddToCart = (product: CartItemModel) => {
-    dispatch(addToCart(product));
-
-    return handleAddToCart;
-  };
-
   const getCart = () => {
     const cart = useSelector((state: RootState) => state.cart.items);
 
@@ -43,7 +33,6 @@ export const useCart = () => {
     handleAddAmount,
     handleReduceAmmount,
     handleRemoveToCart,
-    handleAddToCart,
     getCart,
   };
 };

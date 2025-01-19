@@ -17,12 +17,6 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<CartItemModel>) => {
-      const exists = state.items.some((item) => item.id === action.payload.id);
-      if (!exists) {
-        state.items.push(action.payload);
-      }
-    },
     removeToCart: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
@@ -40,6 +34,6 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeToCart, changeAmount } = cartSlice.actions;
+export const { removeToCart, changeAmount } = cartSlice.actions;
 
 export default cartSlice.reducer;

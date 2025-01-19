@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ConfirmModal } from "@/components/ui/confirm-modal";
 import { useState } from "react";
 import { CartItemModel } from "../cart.model";
-import { useCart } from "@/redux/hooks/useCart";
+import { useCart } from "@/context/cart.store";
 export function CartItem({
   id,
   name,
@@ -16,13 +16,18 @@ export function CartItem({
   amount,
 }: CartItemModel) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { handleAddAmount, handleReduceAmmount, handleRemoveToCart } =
-    useCart();
+  const reduceAmount = useCart((state) => state.reduceAmount);
+  const addAmount = useCart((state) => state.addAmount);
+  const removeToCart = useCart((state) => state.removeToCart);
 
   const handleConfirm = () => {
-    handleRemoveToCart(id);
+    reduceAmount(id);
     setIsModalOpen(false);
   };
+
+  const handleRemoveToCart = () => removeToCart(id);
+  const handleReduceAmount = () => reduceAmount(id);
+  const handleAddAmount = () => addAmount(id);
 
   return (
     <>
@@ -55,7 +60,7 @@ export function CartItem({
                   variant="ghost"
                   size="icon"
                   className="text-destructive/90 hover:text-destructive hover:bg-destructive/10 "
-                  onClick={() => handleRemoveToCart(id)}
+                  onClick={handleRemoveToCart}
                 >
                   <Trash2Icon className="h-5 w-5" />
                 </Button>
@@ -72,11 +77,7 @@ export function CartItem({
                     variant="outline"
                     size="icon"
                     aria-label="Reduce amount"
-                    onClick={() =>
-                      amount > 1
-                        ? handleReduceAmmount(id, amount - 1)
-                        : setIsModalOpen(true)
-                    }
+                    onClick={handleReduceAmount}
                   >
                     <MinusIcon className="h-4 w-4" />
                   </Button>
@@ -87,7 +88,7 @@ export function CartItem({
                     variant="outline"
                     size="icon"
                     aria-label="Add amount"
-                    onClick={() => handleAddAmount(id, amount + 1)}
+                    onClick={handleAddAmount}
                   >
                     <PlusIcon className="h-4 w-4" />
                   </Button>
