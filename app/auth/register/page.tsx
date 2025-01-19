@@ -1,12 +1,19 @@
 "use client";
 
 import { TextField } from "@/components/ui/text-field";
-import { RegisterModel } from "./register.model";
 import { PublicRoutes } from "@/routes/routes";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import AuthForm from "../components/auth-form";
 import axios from "axios";
+
+type RegisterModel = {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 function RegisterPage() {
   const router = useRouter();
   const {
@@ -17,7 +24,7 @@ function RegisterPage() {
 
   async function onSubmit(data: RegisterModel) {
     if (data.password !== data.confirmPassword) {
-      alert("Passwords do not match");
+      alert("Contraseñas no coinciden");
       return;
     }
     const { confirmPassword, ...userData } = data;
@@ -27,7 +34,7 @@ function RegisterPage() {
         userData
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         router.push(PublicRoutes.LOGIN);
       } else {
         alert("Error al crear el usuario. Intenta nuevamente.");

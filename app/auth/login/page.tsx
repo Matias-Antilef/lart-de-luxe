@@ -2,13 +2,17 @@
 
 import { TextField } from "@/components/ui/text-field";
 import { useForm } from "react-hook-form";
-import { LoginModel } from "./login.model";
 import { PublicRoutes } from "@/routes/routes";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/redux/hooks/useUser";
 import { Roles } from "@/models/user.model";
 import AuthForm from "../components/auth-form";
 import axios from "axios";
+import { useUser } from "@/context/user.store";
+
+type LoginModel = {
+  username: string;
+  password: string;
+};
 
 function LoginPage() {
   const router = useRouter();
@@ -17,7 +21,8 @@ function LoginPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginModel>();
-  const { handleSetUser } = useUser();
+
+  const handleSetUser = useUser((state) => state.setUser);
   async function onSubmit(data: LoginModel) {
     try {
       axios

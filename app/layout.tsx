@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ReduxProvider from "../redux/ReduxProvider";
 
 export const metadata: Metadata = {
   title: "L'art De Luxe",
@@ -15,11 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={"antialiased"}>
-        <ReduxProvider>
-          <div className="pt-[55px] overflow-hidden  min-h-screen min-w-screen ">
-            {children}
-          </div>
-        </ReduxProvider>
+        <div className="pt-[55px] overflow-hidden  min-h-screen min-w-screen ">
+          {children}
+        </div>
       </body>
     </html>
   );
