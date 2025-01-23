@@ -1,4 +1,4 @@
-import { PublicRoutes } from "@/routes/routes";
+import { PublicRoutes } from "./routes/routes";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 

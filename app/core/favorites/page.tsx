@@ -3,9 +3,9 @@
 import { useSelector } from "react-redux";
 import { FavoritesModel } from "@/app/core/favorites/favorites.model";
 import { RootState } from "@/redux/store";
-import ProductCard from "@/components/product/product-card";
+import ProductCard from "@/components/product-card";
 import { useFavorite } from "@/redux/hooks/useFavorite";
-import ProductsWrapper from "@/components/product/products-wrapper";
+import ProductsWrapper from "@/components/products-wrapper";
 
 function FavoritesPage() {
   const { handleRemoveFavorite } = useFavorite();

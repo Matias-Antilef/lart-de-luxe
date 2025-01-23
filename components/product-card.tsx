@@ -1,16 +1,16 @@
 import { HeartCrackIcon, HeartIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { PublicRoutes } from "../routes/routes";
+import { ProductCardModel } from "@/models/product.model";
+import { useFavorite } from "../redux/hooks/useFavorite";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import Image from "next/image";
-import Link from "next/link";
-import { PublicRoutes } from "@/routes/routes";
-import { ProductCardModel } from "@/models/product.model";
-import { useFavorite } from "@/redux/hooks/useFavorite";
+} from "./ui/card";
 
 function ProductCard({
   id,
@@ -32,7 +32,7 @@ function ProductCard({
   return (
     <Card className="relative">
       <Link href={`${PublicRoutes.PRODUCT_INFO}/${id}`}>
-        <div className={`${className} relative w-full h-[300px]`}>
+        <div className={`${className} relative w-full h-[500px]`}>
           <Image
             src={"/js.png"}
             alt={name}

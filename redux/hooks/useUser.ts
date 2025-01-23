@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { UserModel } from "@/models/user.model";
 import { logout, setUser } from "../slices/userSlice";
-import { RootState } from "../store";
+import { RootState } from "@/redux/store";
 
 export const useUser = () => {
   const dispatch = useDispatch();

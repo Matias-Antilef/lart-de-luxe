@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ConfirmModal } from "@/components/ui/confirm-modal";
 import { useState } from "react";
-import { CartItemModel } from "../cart.model";
+import { CartItemModel } from "@/app/core/cart/cart.model";
 import { useCart } from "@/redux/hooks/useCart";
 export function CartItem({
   id,

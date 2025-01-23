@@ -1,11 +1,11 @@
 "use client";
 
-import ProductCard from "@/components/product/product-card";
 import { FetchProducts, ProductCardModel } from "@/models/product.model";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProductsWrapper from "@/components/product/products-wrapper";
+import ProductsWrapper from "@/components/products-wrapper";
 import HeroVideo from "@/components/hero-video";
+import ProductCard from "@/components/product-card";
 
 function HomePage() {
   const [products, setProducts] = useState<FetchProducts>({ products: [] });
@@ -21,6 +21,7 @@ function HomePage() {
   return (
     <div>
       <HeroVideo />
+      <h1>Products</h1>
       <ProductsWrapper>
         {products &&
           products?.products.map(

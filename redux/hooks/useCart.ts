@@ -5,7 +5,7 @@ import {
 } from "@/redux/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { CartItemModel } from "../../app/core/cart/cart.model";
+import { CartItemModel } from "@/app/core/cart/cart.model";
 
 export const useCart = () => {
   const dispatch = useDispatch();

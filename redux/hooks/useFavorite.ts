@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { FavoritesModel } from "../../app/core/favorites/favorites.model";
+import { FavoritesModel } from "@/app/core/favorites/favorites.model";
 import {
   addToFavorites,
   removeToFavorites,

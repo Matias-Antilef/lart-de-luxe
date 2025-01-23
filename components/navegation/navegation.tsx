@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Menu, Search } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import NavegationSheetItem from "./navegation-sheet-item";
+import NavegationSheetItem from "@/components/navegation/navegation-sheet-item";
 import NavegationItem from "./navegation-item";
 import styles from "./navegation.module.css";
 import { PublicRoutes } from "@/routes/routes";

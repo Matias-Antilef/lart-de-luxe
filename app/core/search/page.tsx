@@ -1,7 +1,7 @@
 "use client";
 
-import ProductCard from "@/components/product/product-card";
-import ProductsWrapper from "@/components/product/products-wrapper";
+import ProductCard from "@/components/product-card";
+import ProductsWrapper from "@/components/products-wrapper";
 import {
   Card,
   CardContent,
