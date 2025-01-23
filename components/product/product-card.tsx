@@ -1,6 +1,7 @@
 import { HeartCrackIcon, HeartIcon } from "lucide-react";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -9,9 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PublicRoutes } from "@/routes/routes";
 import { ProductCardModel } from "@/models/product.model";
-import { useCart } from "@/redux/hooks/useCart";
 import { useFavorite } from "@/redux/hooks/useFavorite";
-import { Button } from "../ui/button";
 
 function ProductCard({
   id,
@@ -29,7 +28,6 @@ function ProductCard({
   className?: string;
 }) {
   const { handleAddToFavorite } = useFavorite();
-  const { handleAddToCart } = useCart();
 
   return (
     <Card className="relative">
@@ -44,49 +42,35 @@ function ProductCard({
           />
         </div>
         <CardHeader className="p-3">
-          <CardTitle> {name} </CardTitle>
+          <CardTitle className="text-xl"> {name} </CardTitle>
           <div>
-            <CardDescription className="text-xl font-semibold text-black">
+            <CardDescription className="text-lg font-light">
               $ {price}
             </CardDescription>
           </div>
         </CardHeader>
       </Link>
-      <CardDescription className="flex">
-        <Button
-          onClick={() =>
-            handleAddToCart({
-              id,
-              name,
-              amount: 1,
-              price: price,
-              principalPic: principalPic,
-            })
-          }
-          className="flex-1 text-lg py-6"
-        >
-          Añadir a la bolsa
-        </Button>
-      </CardDescription>
-      {favorite ? (
-        <HeartCrackIcon
-          onClick={removeFavorite}
-          className=" hover:cursor-pointer hover:bg-slate-500 hover:stroke-red-600 stroke-red-200 fill-red-300 h-10 w-10 p-2 rounded-xl transition-colors  absolute top-5 right-5"
-        />
-      ) : (
-        <HeartIcon
-          onClick={() =>
-            handleAddToFavorite({
-              id,
-              principalPic,
-              name,
-              price,
-              categories,
-            })
-          }
-          className="hover:fill-red-400 hover:cursor-pointer hover:bg-slate-500 hover:stroke-red-400 stroke-none border-red-300  fill-red-300 h-10 w-10 p-2 rounded-xl transition-colors  absolute top-5 right-5"
-        />
-      )}
+      <CardContent className=" p-0 m-0 absolute top-2 right-2 flex  gap-1">
+        {favorite ? (
+          <HeartCrackIcon
+            onClick={removeFavorite}
+            className=" hover:cursor-pointer hover:bg-slate-500 hover:stroke-red-600 stroke-red-200 fill-red-300 h-10 w-10 p-2 rounded-xl transition-colors "
+          />
+        ) : (
+          <HeartIcon
+            onClick={() =>
+              handleAddToFavorite({
+                id,
+                principalPic,
+                name,
+                price,
+                categories,
+              })
+            }
+            className="hover:fill-red-400 hover:cursor-pointer hover:bg-slate-500 hover:stroke-red-400 stroke-none border-red-300  fill-red-300 h-10 w-10 p-2 rounded-xl transition-colors"
+          />
+        )}
+      </CardContent>
     </Card>
   );
 }

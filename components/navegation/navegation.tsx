@@ -23,7 +23,7 @@ function Navegation() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side="left" className="mt-[55px]">
               <NavegationSheetItem />
             </SheetContent>
           </Sheet>

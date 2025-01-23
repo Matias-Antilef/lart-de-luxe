@@ -1,11 +1,10 @@
 .navegation {
-  position: fixed;
+  position: sticky;
   height: 55px;
   width: 100%;
+  z-index: 999;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 999;
   color: white;
   background-color: black;
 }
@@ -15,6 +14,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
 .logo_link {
   font-size: 1.5rem;
   font-weight: bold;

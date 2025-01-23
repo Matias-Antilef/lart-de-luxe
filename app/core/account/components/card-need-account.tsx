@@ -11,7 +11,7 @@ import Link from "next/link";
 
 function CardNeedAccount() {
   return (
-    <Card className="w-screen h-screen flex flex-col items-center justify-start pt-52">
+    <Card className="w-screen h-full flex flex-col items-center justify-start pt-52">
       <CardHeader>
         <CardTitle>You need to create an account for this feature</CardTitle>
         <CardDescription></CardDescription>

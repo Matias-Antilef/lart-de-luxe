@@ -52,7 +52,7 @@ function SearchPage() {
                     categories={categories}
                     principalPic={principalPic}
                     name={name}
-                    className="h-[40vh] max-lg:h-[35vh] max-sm:h-[50vh]"
+                    className="h-[35vh] max-lg:h-[35vh] max-sm:h-[50vh]"
                   />
                 )
               )}

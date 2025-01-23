@@ -5,10 +5,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <>
-      <Navegation />
-      <div>{children}</div>
-    </>
-  );
+  return <>{children}</>;
 }

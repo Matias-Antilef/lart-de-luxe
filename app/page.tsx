@@ -6,7 +6,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductsWrapper from "@/components/product/products-wrapper";
 import HeroVideo from "@/components/hero-video";
-import Navegation from "@/components/navegation/navegation";
 
 function HomePage() {
   const [products, setProducts] = useState<FetchProducts>({ products: [] });
@@ -21,9 +20,7 @@ function HomePage() {
 
   return (
     <div>
-      <Navegation />
       <HeroVideo />
-
       <ProductsWrapper>
         {products &&
           products?.products.map(
