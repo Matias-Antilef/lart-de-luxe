@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 
 function SearchPage() {
   const [products, setProducts] = useState<FetchProducts>({ products: [] });
+  const [search, setSearch] = useState("");
   useEffect(() => {
     axios
       // .get(process.env.NEXT_PUBLIC_BASE_URL + "/products/getall")
@@ -28,9 +29,11 @@ function SearchPage() {
     <div>
       <Card>
         <CardHeader>
-          <CardTitle>Filter products</CardTitle>
-          <CardDescription>
-            <Input placeholder="Search" />
+          <CardDescription className="px-52 py-3">
+            <Input
+              placeholder="Filter your product"
+              className="py-6 px-10 rounded-full  border-black"
+            />
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -52,7 +55,7 @@ function SearchPage() {
                     categories={categories}
                     principalPic={principalPic}
                     name={name}
-                    className="h-[35vh] max-lg:h-[35vh] max-sm:h-[50vh]"
+                    className="h-[35vh] min-h-[350px] max-lg:h-[35vh] max-sm:h-[50vh]"
                   />
                 )
               )}
