@@ -32,7 +32,7 @@ function ProductCard({
   return (
     <Card className="relative">
       <Link href={`${PublicRoutes.PRODUCT_INFO}/${id}`}>
-        <div className={`${className} relative w-full h-[60vh]`}>
+        <div className={`${className} relative w-full h-[300px]`}>
           <Image
             src={"/js.png"}
             alt={name}
