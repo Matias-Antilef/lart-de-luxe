@@ -55,7 +55,7 @@ function SearchPage() {
                     categories={categories}
                     principalPic={principalPic}
                     name={name}
-                    className="h-[35vh] min-h-[350px] max-lg:h-[35vh] max-sm:h-[50vh]"
+                    className="h-[35vh] min-h-[300px] max-lg:h-[35vh] max-sm:h-[50vh]"
                   />
                 )
               )}

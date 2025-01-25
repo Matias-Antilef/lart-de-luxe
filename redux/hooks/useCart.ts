@@ -12,7 +12,6 @@ export const useCart = () => {
 
   const handleReduceAmmount = (id: number, amount: number) => {
     dispatch(changeAmount({ id, amount }));
-
     return handleReduceAmmount;
   };
 
@@ -23,13 +22,11 @@ export const useCart = () => {
 
   const handleRemoveToCart = (id: number) => {
     dispatch(removeToCart(id));
-
     return handleRemoveToCart;
   };
 
   const handleAddToCart = (product: CartItemModel) => {
     dispatch(addToCart(product));
-
     return handleAddToCart;
   };
 

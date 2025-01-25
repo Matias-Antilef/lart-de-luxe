@@ -155,19 +155,6 @@
       "stock": 50,
       "principalPic": null,
       "photos": []
-    },
-    {
-      "id": 14,
-      "name": "Botella Reutilizable Hydro Flask",
-      "brand": "Hydro Flask",
-      "description": "Botella térmica de acero inoxidable",
-      "price": 30.0,
-      "discount": 10,
-      "active": true,
-      "categories": [],
-      "stock": 50,
-      "principalPic": null,
-      "photos": []
     }
   ]
 }

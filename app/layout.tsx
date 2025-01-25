@@ -15,12 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ReduxProvider>
-        <body className={"antialiased"}>
+      <body className={"antialiased"}>
+        <ReduxProvider>
           <Navegation />
           <div className="overflow-hidden min-h-full">{children}</div>
-        </body>
-      </ReduxProvider>
+        </ReduxProvider>
+      </body>
     </html>
   );
 }

@@ -9,6 +9,10 @@ const nextConfig = {
         destination: "/core/cart/:path*",
       },
       {
+        source: "/product-info/:path*",
+        destination: "/core/product-info/:path*",
+      },
+      {
         source: "/search/:path*",
         destination: "/core/search/:path*",
       },

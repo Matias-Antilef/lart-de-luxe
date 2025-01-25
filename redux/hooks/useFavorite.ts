@@ -15,7 +15,6 @@ export const useFavorite = () => {
 
   const handleRemoveFavorite = (id: number) => {
     dispatch(removeToFavorites(id));
-
     return handleRemoveFavorite;
   };
 
