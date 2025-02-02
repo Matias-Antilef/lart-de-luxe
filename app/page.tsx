@@ -41,6 +41,7 @@ function HomePage() {
                 price={price}
                 stock={stock}
                 categories={categories}
+                className="h-[550px]"
               />
             )
           )}

@@ -15,21 +15,20 @@ function FavoritesPage() {
   );
 
   return (
-    <ProductsWrapper>
+    <ProductsWrapper className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {favorites.map(
         ({ id, price, principalPic, name, categories }: FavoritesModel) => (
-          <div key={id}>
-            <ProductCard
-              key={id}
-              id={id}
-              price={price}
-              categories={categories}
-              principalPic={principalPic}
-              name={name}
-              favorite={true}
-              removeFavorite={() => handleRemoveFavorite(id)}
-            />
-          </div>
+          <ProductCard
+            key={id}
+            id={id}
+            price={price}
+            categories={categories}
+            principalPic={principalPic}
+            name={name}
+            favorite={true}
+            removeFavorite={() => handleRemoveFavorite(id)}
+            className="h-[400px]"
+          />
         )
       )}
     </ProductsWrapper>

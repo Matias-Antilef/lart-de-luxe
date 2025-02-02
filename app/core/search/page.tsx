@@ -15,15 +15,31 @@ import axios from "axios";
 import { useState } from "react";
 import NavFilter from "./components/nav-filter";
 
+interface FilterProducts {
+  response: ProductCardModel[];
+}
+
 function SearchPage() {
-  const [products, setProducts] = useState<FetchProducts>({ products: [] });
+  const [products, setProducts] = useState<FilterProducts>({ response: [] });
 
-  // page=1&size=10&name=a&minPrice=2&maxPrice=3&category=a&orderByHPrice=true&orderByLPrice=true&orderByNameAz=true&orderByNameZa=true
+  const handleFilters = async (filtersAdvance: any) => {
+    const filtersTransformed = { ...filtersAdvance };
 
-  const handleFilters = (filtersAdvance: any) => {
-    const queryParams = new URLSearchParams(filtersAdvance).toString();
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/products/getall?${queryParams}`;
-    console.log(url);
+    if (filtersAdvance.orderBy) {
+      filtersTransformed[filtersAdvance.orderBy] = true;
+      delete filtersTransformed.orderBy;
+    }
+
+    const queryParams = new URLSearchParams(filtersTransformed).toString();
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/products/filter?${queryParams}`;
+
+    try {
+      const response = await axios.get(url);
+      setProducts(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -37,7 +53,7 @@ function SearchPage() {
         <CardContent>
           <ProductsWrapper className="grid-cols-4 gap-5 max-xl:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
             {products &&
-              products?.products.map(
+              products?.response.map(
                 ({
                   id,
                   principalPic,
@@ -53,7 +69,7 @@ function SearchPage() {
                     categories={categories}
                     principalPic={principalPic}
                     name={name}
-                    className=" min-h-[200px] max-lg:h-[35vh] max-sm:h-[50vh]"
+                    className=" h-[400px] max-lg:h-[35vh] max-sm:h-[50vh]"
                   />
                 )
               )}

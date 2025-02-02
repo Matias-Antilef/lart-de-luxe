@@ -30,7 +30,6 @@ interface FilterForm {
   priceMax: number;
   category?: string;
   orderBy?:
-    | "orderDefault"
     | "orderByHPrice"
     | "orderByLPrice"
     | "orderByNameAz"
@@ -46,7 +45,7 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
       priceMin: 0,
       priceMax: 3000,
       category: "",
-      orderBy: "orderDefault",
+      orderBy: "orderByNameAz",
     },
   });
 
@@ -151,15 +150,11 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
               </Select>
 
               <RadioGroup
-                value={watch("orderBy") || "orderDefault"}
+                value={watch("orderBy") || "orderByNameAz"}
                 onValueChange={(value) =>
                   setValue("orderBy", value as FilterForm["orderBy"])
                 }
               >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="orderDefault" id="r1" />
-                  <Label htmlFor="r1">Default</Label>
-                </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="orderByHPrice" id="r2" />
                   <Label htmlFor="r2">orderByHPrice</Label>
