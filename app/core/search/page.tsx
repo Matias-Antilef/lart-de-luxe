@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { FetchProducts, ProductCardModel } from "@/models/product.model";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NavFilter from "./components/nav-filter";
 
 type filterProducts = {
@@ -59,7 +59,7 @@ function SearchPage() {
         <CardHeader>
           <CardDescription className="px-52 py-3">
             <Input
-              placeholder="Filter your product"
+              placeholder="Ingresar nombre de producto"
               className="py-6 px-10 rounded-full border-neutral-800 text-black"
               value={filterProducts.name}
               onKeyDown={handleKeyDown}

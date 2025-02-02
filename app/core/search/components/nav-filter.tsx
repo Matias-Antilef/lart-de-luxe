@@ -24,14 +24,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface FilterForm {
-  priceMin?: number;
-  priceMax?: number;
+  priceMin: number;
+  priceMax: number;
   category?: string;
-  orderDefault?: boolean;
-  orderByHPrice?: boolean;
-  orderByLPrice?: boolean;
-  orderByNameAz?: boolean;
-  orderByNameZa?: boolean;
+  orderBy?:
+    | "orderDefault"
+    | "orderByHPrice"
+    | "orderByLPrice"
+    | "orderByNameAz"
+    | "orderByNameZa";
 }
 
 function NavFilter({ handleFilters }: { handleFilters: any }) {
@@ -42,11 +43,7 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
       priceMin: 0,
       priceMax: 3000,
       category: "",
-      orderDefault: true,
-      orderByHPrice: false,
-      orderByLPrice: false,
-      orderByNameAz: false,
-      orderByNameZa: false,
+      orderBy: "orderDefault",
     },
   });
 
@@ -87,14 +84,14 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
                     className="border p-1 w-[80px]"
                   />
                 </div>
-                <Slider
+                {/* <Slider
                   defaultValue={[priceMin]}
                   max={3000}
                   step={10}
                   className="max-w-[200px]"
                   value={[priceMin]}
                   onValueChange={(value) => setPriceMin(value[0])}
-                />
+                /> */}
               </section>
 
               <section className="flex flex-col gap-2">
@@ -110,13 +107,13 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
                     className="border p-1 w-[80px]"
                   />
                 </div>
-                <Slider
+                {/* <Slider
                   max={3000}
                   step={10}
                   className="max-w-[200px]"
                   value={[priceMax]}
                   onValueChange={(value) => setPriceMax(value[0])}
-                />
+                /> */}
               </section>
 
               <Select
@@ -137,45 +134,30 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
                 </SelectContent>
               </Select>
 
-              <RadioGroup defaultValue="default">
+              <RadioGroup
+                value={watch("orderBy") || "orderDefault"}
+                onValueChange={(value) =>
+                  setValue("orderBy", value as FilterForm["orderBy"])
+                }
+              >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="default"
-                    id="r1"
-                    {...register("orderDefault")}
-                  />
+                  <RadioGroupItem value="orderDefault" id="r1" />
                   <Label htmlFor="r1">Default</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="orderByHPrice"
-                    id="r2"
-                    {...register("orderByHPrice")}
-                  />
+                  <RadioGroupItem value="orderByHPrice" id="r2" />
                   <Label htmlFor="r2">orderByHPrice</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="orderByLPrice"
-                    id="r3"
-                    {...register("orderByLPrice")}
-                  />
+                  <RadioGroupItem value="orderByLPrice" id="r3" />
                   <Label htmlFor="r3">orderByLPrice</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="orderByNameAz"
-                    id="r4"
-                    {...register("orderByNameAz")}
-                  />
+                  <RadioGroupItem value="orderByNameAz" id="r4" />
                   <Label htmlFor="r4">orderByNameAz</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="orderByNameZa"
-                    id="r5"
-                    {...register("orderByNameZa")}
-                  />
+                  <RadioGroupItem value="orderByNameZa" id="r5" />
                   <Label htmlFor="r5">orderByNameZa</Label>
                 </div>
               </RadioGroup>
