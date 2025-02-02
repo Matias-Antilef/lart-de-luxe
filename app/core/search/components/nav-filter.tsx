@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -25,12 +27,28 @@ interface FilterForm {
   priceMin?: number;
   priceMax?: number;
   category?: string;
+  orderDefault?: boolean;
+  orderByHPrice?: boolean;
+  orderByLPrice?: boolean;
+  orderByNameAz?: boolean;
+  orderByNameZa?: boolean;
 }
 
 function NavFilter({ handleFilters }: { handleFilters: any }) {
   const [priceMin, setPriceMin] = useState<number>(0);
   const [priceMax, setPriceMax] = useState<number>(3000);
-  const { register, handleSubmit, setValue, watch } = useForm<FilterForm>();
+  const { register, handleSubmit, setValue, watch } = useForm<FilterForm>({
+    defaultValues: {
+      priceMin: 0,
+      priceMax: 3000,
+      category: "",
+      orderDefault: true,
+      orderByHPrice: false,
+      orderByLPrice: false,
+      orderByNameAz: false,
+      orderByNameZa: false,
+    },
+  });
 
   function onSubmit(data: FilterForm) {
     const filteredData = Object.fromEntries(
@@ -118,6 +136,49 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
                   </SelectGroup>
                 </SelectContent>
               </Select>
+
+              <RadioGroup defaultValue="default">
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="default"
+                    id="r1"
+                    {...register("orderDefault")}
+                  />
+                  <Label htmlFor="r1">Default</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="orderByHPrice"
+                    id="r2"
+                    {...register("orderByHPrice")}
+                  />
+                  <Label htmlFor="r2">orderByHPrice</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="orderByLPrice"
+                    id="r3"
+                    {...register("orderByLPrice")}
+                  />
+                  <Label htmlFor="r3">orderByLPrice</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="orderByNameAz"
+                    id="r4"
+                    {...register("orderByNameAz")}
+                  />
+                  <Label htmlFor="r4">orderByNameAz</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem
+                    value="orderByNameZa"
+                    id="r5"
+                    {...register("orderByNameZa")}
+                  />
+                  <Label htmlFor="r5">orderByNameZa</Label>
+                </div>
+              </RadioGroup>
 
               <Button type="submit">Aplicar filtros</Button>
             </form>
