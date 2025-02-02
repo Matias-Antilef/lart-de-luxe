@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
@@ -24,6 +25,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface FilterForm {
+  name?: string;
   priceMin: number;
   priceMax: number;
   category?: string;
@@ -40,6 +42,7 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
   const [priceMax, setPriceMax] = useState<number>(3000);
   const { register, handleSubmit, setValue, watch } = useForm<FilterForm>({
     defaultValues: {
+      name: "",
       priceMin: 0,
       priceMax: 3000,
       category: "",
@@ -59,9 +62,22 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
 
   return (
     <Sheet>
-      <SheetTrigger className=" flex gap-2 border-[1px] rounded-xl p-2 px-3 border-black ">
-        <SlidersHorizontal />
-        Agregar filtros
+      <Input
+        {...register("name")}
+        type="text"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onSubmit(watch());
+          }
+        }}
+        placeholder="Ingresar nombre de producto"
+        className="py-6 px-10 rounded-full border-neutral-800 text-black"
+      />
+      <SheetTrigger className="flex gap-2 border-[1px] rounded-xl p-2 px-3 border-black ">
+        <div>
+          <SlidersHorizontal />
+          Agregar filtros
+        </div>
       </SheetTrigger>
       <SheetContent className="mt-[55px]">
         <SheetHeader>

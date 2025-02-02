@@ -15,60 +15,22 @@ import axios from "axios";
 import { useState } from "react";
 import NavFilter from "./components/nav-filter";
 
-type filterProducts = {
-  name: string;
-  minPrice?: number;
-  maxPrice?: number;
-  category?: string;
-  orderByHPrice?: boolean;
-  orderByLPrice?: boolean;
-  orderByNameAz?: boolean;
-  orderByNameZa?: boolean;
-};
-
 function SearchPage() {
   const [products, setProducts] = useState<FetchProducts>({ products: [] });
-  const [filterProducts, setFilterProducts] = useState<filterProducts>({
-    name: "",
-    minPrice: 0,
-    maxPrice: 3000,
-    category: "",
-    orderByHPrice: false,
-    orderByLPrice: false,
-    orderByNameAz: false,
-    orderByNameZa: false,
-  });
 
   // page=1&size=10&name=a&minPrice=2&maxPrice=3&category=a&orderByHPrice=true&orderByLPrice=true&orderByNameAz=true&orderByNameZa=true
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      alert(`Input enviado: ${filterProducts.name}`);
-      setFilterProducts({ ...filterProducts, name: "" });
-    }
-  };
-
   const handleFilters = (filtersAdvance: any) => {
-    setFilterProducts(filtersAdvance);
-    alert(JSON.stringify(filterProducts));
+    const queryParams = new URLSearchParams(filtersAdvance).toString();
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/products/getall?${queryParams}`;
+    console.log(url);
   };
 
   return (
     <div>
       <Card>
         <CardHeader>
-          <CardDescription className="px-52 py-3">
-            <Input
-              placeholder="Ingresar nombre de producto"
-              className="py-6 px-10 rounded-full border-neutral-800 text-black"
-              value={filterProducts.name}
-              onKeyDown={handleKeyDown}
-              onChange={(e) =>
-                setFilterProducts({ ...filterProducts, name: e.target.value })
-              }
-            />
-          </CardDescription>
-          <div className="items-center justify-center flex">
+          <div className="items-center justify-center flex flex-col gap-2">
             <NavFilter handleFilters={handleFilters} />
           </div>
         </CardHeader>
