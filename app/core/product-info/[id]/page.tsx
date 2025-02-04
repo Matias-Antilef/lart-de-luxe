@@ -31,7 +31,7 @@ function ProductInfo() {
     <div className="min-h-screen p-2  ">
       <Card className="h-full flex">
         <div>
-          <div className="relative h-full w-[500px]">
+          <div className="relative h-[700px] w-[700px]">
             <Image
               src={"/js.png"}
               alt={productInfo?.name || "Product"}
@@ -40,7 +40,6 @@ function ProductInfo() {
               sizes=""
             />
           </div>
-          <div></div>
         </div>
 
         <div className="h-[500px] w-full flex flex-col ">
@@ -50,6 +49,7 @@ function ProductInfo() {
           </CardHeader>
           <CardContent className=" h-full">
             <span>{productInfo?.price}</span>
+            <span>{JSON.stringify(productInfo)}</span>
           </CardContent>
         </div>
       </Card>
