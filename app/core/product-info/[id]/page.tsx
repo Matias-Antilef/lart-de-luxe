@@ -28,10 +28,19 @@ function ProductInfo() {
   }, [id]);
 
   return (
-    <div className="min-h-screen p-2  ">
-      <Card className="h-full flex">
-        <div>
-          <div className="relative h-[700px] w-[700px]">
+    <div className="">
+      <div className="relative bg-red-600 h-[792px] w-full">
+        <div className="relative flex h-full w-full">
+          <div className="w-1/2 relative">
+            <Image
+              src={"/js.png"}
+              alt={productInfo?.name || "Product"}
+              fill
+              className="object-cover h-full w-full"
+              sizes=""
+            />
+          </div>
+          <div className="w-1/2 relative">
             <Image
               src={"/js.png"}
               alt={productInfo?.name || "Product"}
@@ -41,8 +50,7 @@ function ProductInfo() {
             />
           </div>
         </div>
-
-        <div className="h-[500px] w-full flex flex-col ">
+        <Card className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white">
           <CardHeader className=" ">
             <CardTitle className=" text-xl"> {productInfo?.name} </CardTitle>
             <CardDescription> {productInfo?.brand} </CardDescription>
@@ -51,9 +59,22 @@ function ProductInfo() {
             <span>{productInfo?.price}</span>
             <span>{JSON.stringify(productInfo)}</span>
           </CardContent>
-        </div>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
+  {
+    /* 
+  <div className="h-[500px] w-full flex flex-col ">
+    <CardHeader className=" ">
+      <CardTitle className=" text-xl"> {productInfo?.name} </CardTitle>
+      <CardDescription> {productInfo?.brand} </CardDescription>
+    </CardHeader>
+    <CardContent className=" h-full">
+      <span>{productInfo?.price}</span>
+      <span>{JSON.stringify(productInfo)}</span>
+    </CardContent>
+  </div> */
+  }
 }
 export default ProductInfo;
