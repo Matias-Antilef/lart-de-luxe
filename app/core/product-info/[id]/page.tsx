@@ -63,18 +63,5 @@ function ProductInfo() {
       </div>
     </div>
   );
-  {
-    /* 
-  <div className="h-[500px] w-full flex flex-col ">
-    <CardHeader className=" ">
-      <CardTitle className=" text-xl"> {productInfo?.name} </CardTitle>
-      <CardDescription> {productInfo?.brand} </CardDescription>
-    </CardHeader>
-    <CardContent className=" h-full">
-      <span>{productInfo?.price}</span>
-      <span>{JSON.stringify(productInfo)}</span>
-    </CardContent>
-  </div> */
-  }
 }
 export default ProductInfo;
