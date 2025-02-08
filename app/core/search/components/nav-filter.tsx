@@ -19,26 +19,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Slider } from "@/components/ui/slider";
 import { SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FilterForm } from "./filter.model";
 
-interface FilterForm {
-  name?: string;
-  priceMin: number;
-  priceMax: number;
-  category?: string;
-  orderBy?:
-    | "orderByHPrice"
-    | "orderByLPrice"
-    | "orderByNameAz"
-    | "orderByNameZa";
-}
-
-function NavFilter({ handleFilters }: { handleFilters: any }) {
-  const [priceMin, setPriceMin] = useState<number>(0);
-  const [priceMax, setPriceMax] = useState<number>(3000);
+function NavFilter({
+  handleFilters,
+}: {
+  handleFilters: (filters: FilterForm) => void;
+}) {
   const { register, handleSubmit, setValue, watch } = useForm<FilterForm>({
     defaultValues: {
       name: "",
@@ -48,15 +37,16 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
       orderBy: "orderByNameAz",
     },
   });
-
+  const priceMin = watch("priceMin");
+  const priceMax = watch("priceMax");
   function onSubmit(data: FilterForm) {
     const filteredData = Object.fromEntries(
       Object.entries(data).filter(
-        ([_, value]) => value !== undefined && value !== ""
+        ([, value]) => value !== undefined && value !== ""
       )
     );
 
-    handleFilters(filteredData);
+    handleFilters(filteredData as FilterForm);
   }
 
   return (
@@ -95,18 +85,9 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
                     min={0}
                     max={3000}
                     value={priceMin}
-                    onChange={(e) => setPriceMin(Number(e.target.value))}
                     className="border p-1 w-[80px]"
                   />
                 </div>
-                {/* <Slider
-                  defaultValue={[priceMin]}
-                  max={3000}
-                  step={10}
-                  className="max-w-[200px]"
-                  value={[priceMin]}
-                  onValueChange={(value) => setPriceMin(value[0])}
-                /> */}
               </section>
 
               <section className="flex flex-col gap-2">
@@ -118,17 +99,9 @@ function NavFilter({ handleFilters }: { handleFilters: any }) {
                     min={0}
                     max={3000}
                     value={priceMax}
-                    onChange={(e) => setPriceMax(Number(e.target.value))}
                     className="border p-1 w-[80px]"
                   />
                 </div>
-                {/* <Slider
-                  max={3000}
-                  step={10}
-                  className="max-w-[200px]"
-                  value={[priceMax]}
-                  onValueChange={(value) => setPriceMax(value[0])}
-                /> */}
               </section>
 
               <Select

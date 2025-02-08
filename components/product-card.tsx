@@ -17,7 +17,6 @@ function ProductCard({
   name,
   principalPic,
   price,
-  stock,
   categories,
   favorite,
   removeFavorite,

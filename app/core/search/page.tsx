@@ -2,18 +2,12 @@
 
 import ProductCard from "@/components/product-card";
 import ProductsWrapper from "@/components/products-wrapper";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { FetchProducts, ProductCardModel } from "@/models/product.model";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ProductCardModel } from "@/models/product.model";
 import axios from "axios";
 import { useState } from "react";
 import NavFilter from "./components/nav-filter";
+import { FilterForm } from "./components/filter.model";
 
 interface FilterProducts {
   response: ProductCardModel[];
@@ -22,21 +16,13 @@ interface FilterProducts {
 function SearchPage() {
   const [products, setProducts] = useState<FilterProducts>({ response: [] });
 
-  const handleFilters = async (filtersAdvance: any) => {
-    const filtersTransformed = { ...filtersAdvance };
-
-    if (filtersAdvance.orderBy) {
-      filtersTransformed[filtersAdvance.orderBy] = true;
-      delete filtersTransformed.orderBy;
-    }
-
-    const queryParams = new URLSearchParams(filtersTransformed).toString();
+  const handleFilters = async (filtersAdvance: FilterForm) => {
+    const queryParams = new URLSearchParams(filtersAdvance.toString());
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/products/filter?${queryParams}`;
 
     try {
       const response = await axios.get(url);
       setProducts(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -59,7 +45,6 @@ function SearchPage() {
                   principalPic,
                   name,
                   price,
-                  stock,
                   categories,
                 }: ProductCardModel) => (
                   <ProductCard

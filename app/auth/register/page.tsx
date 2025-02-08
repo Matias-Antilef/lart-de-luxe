@@ -20,7 +20,7 @@ function RegisterPage() {
       alert("Passwords do not match");
       return;
     }
-    const { confirmPassword, ...userData } = data;
+    const { confirmPassword, ...userData } = data; // eslint-disable-line @typescript-eslint/no-unused-vars
     try {
       const response = await axios.post(
         process.env.NEXT_PUBLIC_BASE_URL + "/users/create",

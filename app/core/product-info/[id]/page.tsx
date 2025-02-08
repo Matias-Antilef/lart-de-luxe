@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -23,7 +22,11 @@ function ProductInfo() {
       // .get(process.env.NEXT_PUBLIC_BASE_URL + "/products/getall")
       .get("/products.json")
       .then((res) => {
-        setProductInfo(res.data.products.find((p: any) => p.id == id));
+        setProductInfo(
+          res.data.products.find(
+            (item: ProductModel) => item.id.toString() == id
+          )
+        );
       });
   }, [id]);
 
